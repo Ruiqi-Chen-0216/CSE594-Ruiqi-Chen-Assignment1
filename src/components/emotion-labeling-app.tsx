@@ -62,6 +62,7 @@ export function EmotionLabelingApp() {
               onInstructions={() => setInstructions(true)}
               onAnswer={(emotion) => {
                 const id = task.tweetIds[task.currentIndex];
+                if (!id) return;
                 persist({ ...task, answers: { ...task.answers, [id]: emotion } });
               }}
               onBack={() => persist({ ...task, currentIndex: task.currentIndex - 1 })}
@@ -111,6 +112,7 @@ function TaskContent(props: TaskProps) {
   if (props.task.status === "review") return <Review {...props} />;
   const tweets = getAssignedTweets(props.task);
   const tweet = tweets[props.task.currentIndex];
+  if (!tweet) return <StorageError />;
   const selected = props.task.answers[tweet.id];
   return <section className="w-full" aria-labelledby="task-heading">
     <div className="mb-8 flex items-center justify-between">

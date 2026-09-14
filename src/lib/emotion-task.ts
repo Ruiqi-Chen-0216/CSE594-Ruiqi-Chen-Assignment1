@@ -283,7 +283,12 @@ export function createTask(): TaskState {
   const pool = [...TWEETS];
   for (let index = pool.length - 1; index > 0; index -= 1) {
     const randomIndex = Math.floor(Math.random() * (index + 1));
-    [pool[index], pool[randomIndex]] = [pool[randomIndex], pool[index]];
+    const current = pool[index];
+    const random = pool[randomIndex];
+    if (current && random) {
+      pool[index] = random;
+      pool[randomIndex] = current;
+    }
   }
   return { participantId: crypto.randomUUID(), tweetIds: pool.slice(0, 5).map(({ id }) => id), answers: {}, currentIndex: 0, status: "labeling" };
 }
