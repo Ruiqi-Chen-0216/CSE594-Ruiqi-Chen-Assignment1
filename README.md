@@ -1,55 +1,72 @@
-# CSE594-Ruiqi Chen-Assignment1
+# CSE594 Assignment 1 — Emotion Annotation
 
-A five-post emotion labeling task. React + Vite serve a static page; Supabase stores each participant's five answers in one row. No login, separate API server, or local database is required.
+**Ruiqi Chen · A1-2: Create a web interface for a labeling task**
 
-## Current status
+**[Open the annotation task](https://ruiqi-chen-0216.github.io/CSE594-Ruiqi-Chen-Assignment1/)**
 
-**Live site:** https://ruiqi-chen-0216.github.io/CSE594-Ruiqi-Chen-Assignment1/
+This repository contains my annotation system for A1-2. Participants read five randomly selected tweets and choose the emotion expressed in each one. The system records which participant labeled each tweet and the label they selected.
 
-**Source:** https://github.com/Ruiqi-Chen-0216/CSE594-Ruiqi-Chen-Assignment1
+## Using the interface
 
-**Successful deployment:** https://github.com/Ruiqi-Chen-0216/CSE594-Ruiqi-Chen-Assignment1/actions/runs/34915742064
+1. Read the instructions and select **Start task**. No account or personal information is required.
+2. Choose one emotion for each tweet: **anger, fear, joy, love, sadness, or surprise**. No answer is preselected, and **Next** becomes available after a choice is made.
+3. Use **Back** to revisit a tweet. After the fifth tweet, review all five answers. **Edit** opens the selected tweet and returns directly to the review page.
+4. Select **Submit responses**. The confirmation page appears after the database acknowledges the submission.
 
-Local implementation and browser checks are complete. The owner's Supabase public configuration is installed in ignored `.env.local`. **One agent-operated integration test was submitted from the real local website and acknowledged by Supabase (HTTP 200, `true`); completion survived refresh.** Identical-payload retries, conflicting/invalid payload rejection and public read/update/delete denial were verified against the actual API. The owner supplied a Supabase SQL Editor screenshot: the same participant ID and all five ordered tweet/label pairs match the browser submission, with one shared database timestamp. Local cloud persistence is verified. GitHub Pages is now deployed; a separate five-answer submission from the public URL received HTTP 200 / `true` and retained completion after refresh. The administrator screenshot for that public-site submission remains pending.
+Refreshing preserves the assigned tweets, their order, and the answers entered so far. After submission, the same browser retains the completion page. To try the task again during evaluation, use a separate browser profile or a new private-browsing session.
 
-| Check                                                                   | Result                                                                                                                                                                                                                                                                                                            |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Original UI                                                             | Ran the five-post → edit → Review → simulated completion flow in headless Edge before replacing submission                                                                                                                                                                                                        |
-| Dataset                                                                 | 60 fixed samples, unique source rows and `tweet_001`–`tweet_060` mapping verified; all six labels covered                                                                                                                                                                                                         |
-| TypeScript / production build                                           | Passed                                                                                                                                                                                                                                                                                                            |
-| ESLint                                                                  | Passed with six existing Fast Refresh warnings in shared UI components; zero errors                                                                                                                                                                                                                               |
-| Browser checks                                                          | Passed on the production test build under `/CSE594-Ruiqi-Chen-Assignment1/`: two independent browser contexts, random sets, no preselection, keyboard radios, modal focus/Escape, Back, draft refresh, edit/refresh/direct return to Review, submission freeze/retry/conflict/confirmed completion, mobile layout |
-| API behavior in browser tests                                           | Explicitly stubbed network failure, conflict and acknowledgement; **not evidence of database persistence**                                                                                                                                                                                                        |
-| Supabase live API | Real browser submission acknowledged; exact retry succeeds; changed payload conflicts; wrong count, duplicate/unknown ID, unknown label and oversized answers rejected; public GET/PATCH/DELETE denied. Owner-supplied SQL Editor screenshot verified: all five ordered rows match the browser submission. |
-| GitHub Pages | Public repository created and deployed successfully. Clean npm ci, typecheck, lint and production build passed in Actions. A real five-answer public-site submission was acknowledged by Supabase and completion survived refresh; its administrator query/screenshot is pending. |
-| Lovable                                                                 | Local remote/tracking and obsolete runtime integration removed; platform-side connection has not been verified                                                                                                                                                                                                    |
+## Dataset
 
-The unconfigured production build was also checked before cloud configuration: it displays collection unavailability, retains all five answers, sends no submission request and never reports completion.
+The task uses a fixed sample of **60 tweets** from the [Emotion dataset](https://huggingface.co/datasets/dair-ai/emotion), exceeding the assignment's minimum of 50. The sample covers all six reference categories:
 
-Private local integration-test evidence is saved under `.local-backup/`: `cloud-local-test.json`, `cloud-contract-results.json`, browser screenshots and `cloud-local-verify.sql`. The owner ran that SQL and supplied the matching five-row screenshot in the conversation. Keep the original screenshot with the assignment report; it has not been copied into public source. The test is agent-operated and must not be represented as a recruited human participant. No data was deleted to test retries.
+| Anger | Fear | Joy | Love | Sadness | Surprise |
+| ----- | ---- | --- | ---- | ------- | -------- |
+| 8     | 10   | 13  | 8    | 12      | 9        |
 
-## 1. Configure Supabase for a fresh installation
+Each tweet has a stable ID from `tweet_001` to `tweet_060`. Five distinct tweets are sampled without replacement for each new task. Sampling is independent across participants rather than using the same fixed set for everyone.
 
-The current owner project is already configured; do not rerun the schema there. These steps are for a new independent installation.
+I applied light text cleanup for readability: capitalization, contractions, punctuation, and clear spelling or article errors. Ambiguous fragments, informal language, negation, and emotional intensity were retained. The [text review](data/text-review.json) records every original/display pair and its editing rationale. The [display dataset](src/data/tweets.json) contains only tweet IDs and text; participants are not shown the reference labels.
 
-1. Sign in at [Supabase Dashboard](https://supabase.com/dashboard) and create a project in an organization you control. Select the Free plan if appropriate. Save the database password privately; this app does not need it.
-2. Wait for the project to be ready. Open **SQL Editor → New query**, paste the entire [supabase/schema.sql](supabase/schema.sql), and run it once. It creates one table, a private validator and a narrow submission function in a transaction. If a same-named object exists, stop and inspect it; do not delete existing data or rerun by dropping tables.
-3. Find the **Project URL** in the project's connection/API settings, and a **publishable key** in **Settings → API Keys**. The URL looks like `https://<project-ref>.supabase.co`; the key starts with `sb_publishable_`.
-4. Copy [.env.example](.env.example) to `.env.local` and replace the two placeholders. Keep `VITE_BASE_PATH=/` for local development. Never put a secret key, `service_role` key, database password, or access token in a `VITE_*` variable. This implementation deliberately accepts only the new publishable-key format.
-5. Run the app using the instructions below. Environment changes require restarting Vite (and rebuilding an already built site).
+## Design and recorded data
 
-The browser sends the publishable key in the `apikey` header. Database access is governed by privileges and row-level security, not secrecy of that public key. [Supabase API key documentation](https://supabase.com/docs/guides/getting-started/api-keys)
+I used one tweet per page to keep the task focused, a **1 of 5** progress indicator to show the remaining work, and a review step so participants can correct choices before submission. All six emotion options have the same visual treatment. The interface supports mobile screens and keyboard navigation.
 
-## 2. Run locally
+A randomly generated browser ID identifies each participant without collecting a name or email. The ID is reused in that browser. Final answers are saved to a hosted Supabase database; browser storage preserves the in-progress task.
 
-Install Node.js 22.12 or newer (Node 22 recommended), then run in this directory:
+Each submission contains:
+
+| Field             | What it records                                   |
+| ----------------- | ------------------------------------------------- |
+| `participant_id`  | Anonymous browser ID                              |
+| `answers`         | Five ordered `{tweet_id, selected_label}` entries |
+| `dataset_version` | The version of the displayed text                 |
+| `submitted_at`    | Database-generated submission time                |
+
+One database row stores all five answers together. The array can be expanded into five annotation rows to show **who labeled which tweet with which label**. Duplicate retries acknowledge the same saved answers, while conflicting answers do not overwrite an existing submission. Public visitors cannot read, update, or delete stored responses.
+
+## Testing
+
+Complete five-tweet submissions were tested locally and through the live website. The local submission was checked against the Supabase SQL Editor results: the participant ID and all five ordered tweet/label pairs matched. The live-site submission also received a successful database acknowledgement, and completion remained after refresh.
+
+Automated browser tests cover random assignment in two independent browser contexts, required choices, Back/Next, draft recovery, review/edit, keyboard controls, mobile layout, and submission failure/retry behavior. These repeatable tests use intercepted API responses. Separate checks against the hosted database verified that invalid submissions and conflicting answers are rejected and that public read/update/delete requests are denied. Type checking and the production build passed; lint reports no errors.
+
+## Running the code
+
+The live link above is ready to use. To run the same interface locally, install **Node.js 22.12 or later**, then run from the project directory:
 
 ```sh
 npm ci
+```
+
+Copy `.env.example` to `.env.local`. It includes the public connection settings for this assignment's database; no Supabase account or database setup is needed to evaluate the interface.
+
+```sh
 npm run dev
 ```
 
-Open `http://127.0.0.1:8080/`. Without valid public configuration, the page clearly says collection is unavailable; it cannot silently simulate a successful submission. Local development still needs internet access for the hosted database.
+Open **http://127.0.0.1:8080/**. An internet connection is required, and local runs submit to the same hosted database as the live site.
+
+Additional commands:
 
 ```sh
 npm run typecheck
@@ -58,91 +75,44 @@ npm run build
 npm run preview
 ```
 
-The static output is `dist/`. Preview's default URL is `http://localhost:4173/`. The source does not require the original private CSV at runtime.
-
-Browser regression checks:
+`build` produces the static site in `dist/`; `preview` serves it at **http://localhost:4173/**. To run the automated browser tests:
 
 ```sh
 npx playwright install chromium
 npm test
 ```
 
-On Windows with Microsoft Edge installed, `$env:BROWSER_CHANNEL='msedge'` in PowerShell lets `npm test` use Edge without installing Chromium. Tests build a separate site in ignored `test-results/site/` with an explicitly fake endpoint, intercept all submission calls, and never write to Supabase. Desktop/mobile screenshots in `test-results/` are UI evidence only. The regular `dist/` build is separate.
+## Code organization
 
-## 3. Verify a real local submission and collect evidence
+| File                                      | Purpose                                                |
+| ----------------------------------------- | ------------------------------------------------------ |
+| `src/components/emotion-labeling-app.tsx` | Instructions, labeling, review, and completion screens |
+| `src/lib/emotion-task.ts`                 | Participant IDs, random sampling, and saved task state |
+| `src/lib/submissions.ts`                  | Submission to the hosted database                      |
+| `src/data/tweets.json`                    | The 60 displayed tweets                                |
+| `data/text-review.json`                   | Original text, display text, and editing rationale     |
+| `supabase/schema.sql`                     | Database table, validation, and access permissions     |
+| `tests/browser.mjs`                       | Automated interface tests                              |
 
-1. In the configured app, complete all five posts, optionally edit, and submit. Completion appears only after the database API returns its positive acknowledgement.
-2. In that browser's developer console, read the anonymous ID and frozen submission:
+The frontend uses React, TypeScript, and Tailwind CSS with Vite. GitHub Pages hosts the interface, and Supabase provides persistent storage.
 
-   ```js
-   JSON.parse(localStorage.getItem("cse594-emotion-task-live-v1"));
-   ```
+<details>
+<summary>Recreating the database independently (optional)</summary>
 
-3. In Supabase SQL Editor, replace `PASTE_BROWSER_PARTICIPANT_UUID` below with `participantId`. Compare every `tweet_id` and `selected_label` to `submission.answers` from the browser. Take a screenshot of these **five actual database rows** for the assignment:
+For a separate installation, run `supabase/schema.sql` once in a new Supabase project's SQL Editor. Replace the URL and publishable key in `.env.local` with that project's public values, then restart the app. The submitted system already has its database configured.
 
-   ```sql
-   select s.participant_id,
-          a.answer->>'tweet_id' as tweet_id,
-          a.answer->>'selected_label' as selected_label,
-          s.submitted_at
-   from public.submissions s
-   cross join lateral jsonb_array_elements(s.answers)
-     with ordinality as a(answer, position)
-   where s.participant_id = 'PASTE_BROWSER_PARTICIPANT_UUID'::uuid
-   order by a.position;
-   ```
+To inspect a submission as the database administrator, replace the UUID below with the participant ID:
 
-4. Check permissions from the SQL Editor. Both roles should have `false` for all four table operations; only `anon` should have `submit_allowed = true`. `rls_enabled` must be `true`:
+```sql
+select s.participant_id,
+       a.answer->>'tweet_id' as tweet_id,
+       a.answer->>'selected_label' as selected_label,
+       s.submitted_at
+from public.submissions s
+cross join lateral jsonb_array_elements(s.answers)
+  with ordinality as a(answer, position)
+where s.participant_id = 'PARTICIPANT_UUID'::uuid
+order by a.position;
+```
 
-   ```sql
-   select role_name,
-     has_table_privilege(role_name, 'public.submissions', 'SELECT') as can_read,
-     has_table_privilege(role_name, 'public.submissions', 'INSERT') as can_insert_directly,
-     has_table_privilege(role_name, 'public.submissions', 'UPDATE') as can_update,
-     has_table_privilege(role_name, 'public.submissions', 'DELETE') as can_delete,
-     has_function_privilege(role_name,
-       'public.submit_emotion_task(uuid,jsonb,text)', 'EXECUTE') as submit_allowed
-   from (values ('anon'), ('authenticated')) roles(role_name);
-   select relrowsecurity as rls_enabled
-   from pg_class where oid = 'public.submissions'::regclass;
-   ```
-
-5. With the project's publishable key, verify a Data API `GET /rest/v1/submissions?select=*` is denied. A valid RPC submission must work. Do not grant SELECT to resolve an error. Verify invalid/duplicate IDs, an invalid label, fewer/more than five answers and a changed payload for the same participant are rejected; resending the exact saved payload must acknowledge without changing the row count or timestamp. Live API checks for exact retry, conflict, invalid count/IDs/labels/size and public GET/PATCH/DELETE denial have now passed. The owner-supplied expanded-row screenshot now confirms five matching rows and a shared database timestamp. No separate before/after timestamp comparison was performed.
-
-Keep real participant screenshots/exports outside the public repository, for example in the ignored `.local-backup/` folder. Do not delete valid rows to repeat a test. Use a separate browser context for an independent test participant.
-
-## 4. Publish to GitHub Pages after cloud verification
-
-Owner and target repository approved by the user: **Ruiqi-Chen-0216 / CSE594-Ruiqi-Chen-Assignment1**. This repository has now been created and deployed with the authenticated owner account. The following steps describe reproduction for a fresh repository; the current deployment does not need to be created again.
-
-1. Sign in as that owner and create the intended repository without initializing an extra README. Check `git status` before staging; `.env*` (except `.env.example`), the original labeled CSV, backups and test artifacts are ignored. Preserve existing history. The former `origin` was removed, so add the new repository after it exists:
-
-   ```sh
-   git remote add origin https://github.com/Ruiqi-Chen-0216/CSE594-Ruiqi-Chen-Assignment1.git
-   git add .
-   git commit -m "Implement persistent five-post emotion labeling task"
-   git push -u origin main
-   ```
-
-2. In repository **Settings → Secrets and variables → Actions → Variables**, add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` with the public values from step 1.
-3. In **Settings → Pages**, choose **GitHub Actions** as the source.
-4. In **Actions**, run **Deploy assignment to GitHub Pages** manually. The workflow checks configuration, types and lint, sets Vite's base to the actual repository name, and uploads **only `dist/`**. It has no automatic push trigger, so publishing remains an explicit final step.
-5. Open the URL actually reported by the deployment. Complete another full task from that public URL; compare its five answers in the real database and take the collected-data screenshot. Local success does not establish public-site success. Update the status table above with the actual URL and results before submission.
-
-Vite's repository base and static deployment steps follow its [official deployment guide](https://vite.dev/guide/static-deploy.html). Supabase currently lists pausing Free projects after one inactive week; check the project is active through submission and grading. No paid upgrade or keepalive was added. [Supabase pricing](https://supabase.com/pricing)
-
-## Data and implementation notes
-
-- [src/data/tweets.json](src/data/tweets.json) contains only IDs and frozen display text; no per-post reference labels enter the app or build.
-- [data/text-review.json](data/text-review.json) records all 60 original/display pairs, source-row mappings and per-item reasons. Reference-label coverage is anger 8, fear 10, joy 13, love 8, sadness 12, surprise 9. The original `emotion_assignment_random_60.csv` is preserved locally and ignored by Git.
-- Conservative preprocessing was requested by the user; it is not represented as instructor-approved. Obvious capitalization/contractions/punctuation and a few unambiguous spelling/article issues were corrected. Ambiguous fragments, missing context, negation, informal wording and emotional intensity remain. `emotion-60-reviewed-v1` identifies this frozen display dataset; do not change it once collection starts.
-- [src/lib/emotion-task.ts](src/lib/emotion-task.ts) uses a browser UUID, independent Fisher–Yates sampling of five distinct posts, and saved order/answers/location/edit state. Different users can coincidentally get the same combination; there is no global uniqueness registry. Clearing storage/changing devices/shared browsers limits real-person identity. No repeated rounds are offered.
-- New `cse594-emotion-*` storage keys isolate real submissions from old preview completion. The first submission freezes the ordered payload before sending. An uncertain result locks edits and allows retry of that exact payload. The server returns true only for a newly saved or exactly matching existing submission; conflicts do not overwrite data.
-- [src/lib/submissions.ts](src/lib/submissions.ts) makes one `fetch` to Supabase's SQL RPC. [supabase/schema.sql](supabase/schema.sql) enables RLS, revokes direct table access, validates five distinct known IDs and six allowed labels, bounds the stored answer payload, and grants `anon` only the narrow submission function. The definer function has an empty search path and explicit object references. [Supabase function security guidance](https://supabase.com/docs/guides/database/functions)
-- The original interface and shared UI utilities remain. Lovable's build plugin, SSR/router scaffolding, telemetry hooks, old favicon and Bun-specific config/lockfile were removed; `package-lock.json` is the maintained lockfile. The prior working tree and Git history are backed up locally at `.local-backup/before-implementation.zip`. The local Git disconnection does not prove Lovable's platform-side synchronization is disabled; check that project's GitHub integration separately without revoking access to other projects.
-
-## Assignment hand-in
-
-Follow the provided simplified brief. Include runnable source, `package.json` + `package-lock.json`, `.env.example`, SQL, this README and the 60-item text review. Supply the **verified live link and real collected-data screenshot** separately in the assignment report; the localhost database screenshot has been verified; the live link is verified and only the public-site database screenshot remains outstanding. Exclude `node_modules`, `.git`, local tools/backups, actual environment files and participant exports from public source. A1-1 is outside this implementation.
-
-For the final public-site database screenshot, run the already prepared private `.local-backup/cloud-public-verify.sql` in Supabase SQL Editor and compare the five rows to `.local-backup/cloud-public-test.json`. The public browser review/completion screenshots are saved alongside them. These files contain integration-test evidence and are intentionally excluded from the public repository and source ZIP.
+</details>

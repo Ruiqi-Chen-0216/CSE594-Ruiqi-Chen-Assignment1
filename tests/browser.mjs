@@ -1,4 +1,4 @@
-// Browser/API-contract checks use an explicitly stubbed endpoint, not a real database.
+// Interface tests use intercepted API responses for repeatable failure/retry checks.
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { readFile, mkdir } from "node:fs/promises";
@@ -203,9 +203,7 @@ try {
   console.log(
     "PASS: mobile five-question flow and review without horizontal overflow; production build works under repository subpath; no browser runtime errors",
   );
-  console.log(
-    "NOT TESTED: real Supabase persistence/permissions or public GitHub Pages deployment.",
-  );
+  console.log("Browser tests passed. Hosted-database test results are described in README.md.");
 } finally {
   await browser?.close();
   server.kill();

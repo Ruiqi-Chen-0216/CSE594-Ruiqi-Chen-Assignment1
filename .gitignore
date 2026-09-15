@@ -7,6 +7,9 @@ playwright-report/
 .env.*
 !.env.example
 emotion_assignment_random_60.csv
+AGENTS.md
+Codex_CSE594_Assignment1_Simplified_Brief.md
+HAI FA26 Assignment 1 Instruction.pdf
 
 logs
 *.log

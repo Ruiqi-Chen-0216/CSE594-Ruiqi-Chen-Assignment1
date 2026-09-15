@@ -3,6 +3,7 @@ node_modules
 .local-backup
 test-results
 data/text-review.json
+AGENTS.md
 Codex_CSE594_Assignment1_Simplified_Brief.md
 emotion_assignment_random_60.csv
 dist

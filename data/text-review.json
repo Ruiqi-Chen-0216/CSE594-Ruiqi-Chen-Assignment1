@@ -9,7 +9,7 @@
     "sadness": 12,
     "surprise": 9
   },
-  "policy": "User-requested conservative preprocessing, not independently confirmed as instructor-approved. No label-based rewriting. Per-item ground truth is excluded.",
+  "policy": "Display text was lightly edited for capitalization, contractions, punctuation, and clear spelling or article errors. Ambiguous wording, informal language, negation, and emotional intensity were retained. All 60 samples and their source mappings are unchanged. Reference labels were not used to rewrite the text and are not included per item.",
   "items": [
     {
       "tweet_id": "tweet_001",
@@ -17,7 +17,7 @@
       "source_row": 5096,
       "original_text": "i really do feel for kids who are tortured in highschool",
       "display_text": "I really do feel for kids who are tortured in high school.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Split the clear spelling error highschool into high school."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Split the clear spelling error highschool into high school."
     },
     {
       "tweet_id": "tweet_002",
@@ -25,7 +25,7 @@
       "source_row": 7953,
       "original_text": "i feel the need to blog pagetitle from flab to fab",
       "display_text": "I feel the need to blog pagetitle from flab to fab.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve ambiguous pagetitle text; do not invent a title or missing context."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved ambiguous pagetitle text; did not invent a title or missing context."
     },
     {
       "tweet_id": "tweet_003",
@@ -33,7 +33,7 @@
       "source_row": 8608,
       "original_text": "i need to go and im feeling a longing inside at that point for him",
       "display_text": "I need to go, and I'm feeling a longing inside at that point for him.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_004",
@@ -41,7 +41,7 @@
       "source_row": 15822,
       "original_text": "i feel but distressed is sufficient",
       "display_text": "I feel but distressed is sufficient.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve the ambiguous fragment; do not infer what follows feel."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved the ambiguous fragment; did not infer what follows feel."
     },
     {
       "tweet_id": "tweet_005",
@@ -49,7 +49,7 @@
       "source_row": 14886,
       "original_text": "i dunnno i just feel sorta discontent but im tired and stuff i just wanna go to bed",
       "display_text": "I dunno, I just feel sorta discontent, but I'm tired and stuff. I just wanna go to bed.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Correct dunnno to dunno and im to I’m; retain sorta, wanna and stuff."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Corrected dunnno to dunno and im to I’m; retained sorta, wanna and stuff."
     },
     {
       "tweet_id": "tweet_006",
@@ -57,7 +57,7 @@
       "source_row": 5415,
       "original_text": "i do know im feeling times more guilty",
       "display_text": "I do know I'm feeling times more guilty.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore I’m; leave the missing quantity before times unresolved."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored I’m; left the missing quantity before times unresolved."
     },
     {
       "tweet_id": "tweet_007",
@@ -65,7 +65,7 @@
       "source_row": 1112,
       "original_text": "i remember feeling the most terrified i had ever felt in my entire life and that its still affecting me now but ive never thought it accounted to trauma",
       "display_text": "I remember feeling the most terrified I had ever felt in my entire life, and that it's still affecting me now, but I've never thought it accounted to trauma.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore it’s and I’ve; retain accounted to trauma because intended meaning is uncertain."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored it’s and I’ve; retained accounted to trauma because intended meaning is uncertain."
     },
     {
       "tweet_id": "tweet_008",
@@ -73,7 +73,7 @@
       "source_row": 15419,
       "original_text": "i hear that bird i know that all is well and i feel safe",
       "display_text": "I hear that bird. I know that all is well, and I feel safe.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_009",
@@ -81,7 +81,7 @@
       "source_row": 3924,
       "original_text": "i feel that im not talented in baking",
       "display_text": "I feel that I'm not talented in baking.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_010",
@@ -89,7 +89,7 @@
       "source_row": 1452,
       "original_text": "i like this so much but i feel like somehow this will be a term that becomes more popular in the future",
       "display_text": "I like this so much, but I feel like somehow this will be a term that becomes more popular in the future.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_011",
@@ -97,7 +97,7 @@
       "source_row": 9845,
       "original_text": "i just feel more resentful and tell myself it was better if i did not share with him",
       "display_text": "I just feel more resentful and tell myself it was better if I did not share with him.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_012",
@@ -105,7 +105,7 @@
       "source_row": 11004,
       "original_text": "i know i just ended a very big giveaway here on the muse but im still feeling quite generous",
       "display_text": "I know I just ended a very big giveaway here on the muse, but I'm still feeling quite generous.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore I’m; retain the muse casing because its referent is unknown."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored I’m; retained the muse casing because its referent is unknown."
     },
     {
       "tweet_id": "tweet_013",
@@ -113,7 +113,7 @@
       "source_row": 13233,
       "original_text": "i feel unloved you are there to remind me you love me",
       "display_text": "I feel unloved. You are there to remind me you love me.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Separate clauses; do not insert when/if or change the negative feeling."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Separated clauses; did not insert when/if or change the negative feeling."
     },
     {
       "tweet_id": "tweet_014",
@@ -121,7 +121,7 @@
       "source_row": 8208,
       "original_text": "i dissect every new fact that comes to surface i feel more disheartened",
       "display_text": "I dissect every new fact that comes to the surface. I feel more disheartened.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Add the article in comes to the surface; do not add a causal connection."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Added the article in comes to the surface; did not add a causal connection."
     },
     {
       "tweet_id": "tweet_015",
@@ -129,7 +129,7 @@
       "source_row": 11753,
       "original_text": "i was put on a less powerful pain med drip but i didnt feel out of control so i liked that drug better",
       "display_text": "I was put on a less powerful pain med drip, but I didn't feel out of control, so I liked that drug better.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_016",
@@ -137,7 +137,7 @@
       "source_row": 8238,
       "original_text": "i am on the write track i feel contented and at peace",
       "display_text": "I am on the write track. I feel contented and at peace.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Keep write track because it may be deliberate wordplay; do not assume right."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Kept write track because it may be deliberate wordplay; did not assume right."
     },
     {
       "tweet_id": "tweet_017",
@@ -145,7 +145,7 @@
       "source_row": 45,
       "original_text": "i was feeling listless from the need of new things something different",
       "display_text": "I was feeling listless from the need of new things, something different.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_018",
@@ -153,7 +153,7 @@
       "source_row": 12506,
       "original_text": "i was feeling horny so we let her in",
       "display_text": "I was feeling horny, so we let her in.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_019",
@@ -161,7 +161,7 @@
       "source_row": 4271,
       "original_text": "i have a feeling i may be popular with the lady folk",
       "display_text": "I have a feeling I may be popular with the lady folk.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_020",
@@ -169,7 +169,7 @@
       "source_row": 8845,
       "original_text": "i feel bouncy and weird and strange and i love it",
       "display_text": "I feel bouncy and weird and strange, and I love it.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_021",
@@ -177,7 +177,7 @@
       "source_row": 13777,
       "original_text": "i always feel overwhelmed with a mixture of feelings while listening to these songs",
       "display_text": "I always feel overwhelmed with a mixture of feelings while listening to these songs.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_022",
@@ -185,7 +185,7 @@
       "source_row": 13234,
       "original_text": "i was feeling that we had two too many as it was but oh well",
       "display_text": "I was feeling that we had two too many as it was, but oh well.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_023",
@@ -193,7 +193,7 @@
       "source_row": 8797,
       "original_text": "i had on my plate without the stress of feeling completely overwhelmed",
       "display_text": "I had on my plate without the stress of feeling completely overwhelmed.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Keep the incomplete fragment; do not supply a missing object."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Kept the incomplete fragment; did not supply a missing object."
     },
     {
       "tweet_id": "tweet_024",
@@ -201,7 +201,7 @@
       "source_row": 4695,
       "original_text": "i love the smell it makes me feel invigorated and fresh and happy",
       "display_text": "I love the smell. It makes me feel invigorated and fresh and happy.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_025",
@@ -209,7 +209,7 @@
       "source_row": 14888,
       "original_text": "i had been feeling suspicious all day",
       "display_text": "I had been feeling suspicious all day.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_026",
@@ -217,7 +217,7 @@
       "source_row": 5681,
       "original_text": "i am feeling rebellious which is often i suppose",
       "display_text": "I am feeling rebellious, which is often, I suppose.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Add commas; retain the elliptical which is often."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Added commas; retained the elliptical which is often."
     },
     {
       "tweet_id": "tweet_027",
@@ -225,7 +225,7 @@
       "source_row": 6968,
       "original_text": "i may also voice my feelings on a few things here and there if you dont agree with them cool and please do feel free to let me know",
       "display_text": "I may also voice my feelings on a few things here and there. If you don't agree with them, cool, and please do feel free to let me know.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_028",
@@ -233,7 +233,7 @@
       "source_row": 7308,
       "original_text": "i feel she was wronged",
       "display_text": "I feel she was wronged.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_029",
@@ -241,7 +241,7 @@
       "source_row": 2677,
       "original_text": "i am feeling irate",
       "display_text": "I am feeling irate.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_030",
@@ -249,7 +249,7 @@
       "source_row": 6587,
       "original_text": "i have been blogging i have told you of the countless ways that i feel loved and blessed by the people i call my friends",
       "display_text": "I have been blogging. I have told you of the countless ways that I feel loved and blessed by the people I call my friends.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Separate clauses without supplying since/while or other context."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Separated clauses without supplying since/while or other context."
     },
     {
       "tweet_id": "tweet_031",
@@ -257,7 +257,7 @@
       "source_row": 2199,
       "original_text": "i stop learning or if i am feeling inhibited my performance flounders",
       "display_text": "I stop learning or if I am feeling inhibited my performance flounders.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Retain ambiguous conditional structure without adding if."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Retained ambiguous conditional structure without adding if."
     },
     {
       "tweet_id": "tweet_032",
@@ -265,7 +265,7 @@
       "source_row": 6166,
       "original_text": "i need nine hours but it s true and if i get less even seven hours which is supposed to be the norm and which some people consider a lot i feel grumpy unhappy and seriously unmotivated",
       "display_text": "I need nine hours, but it's true, and if I get less, even seven hours, which is supposed to be the norm and which some people consider a lot, I feel grumpy, unhappy and seriously unmotivated.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_033",
@@ -273,7 +273,7 @@
       "source_row": 15427,
       "original_text": "i feel irritable and low but i just cannot put my finger on what exactly i am unhappy about",
       "display_text": "I feel irritable and low, but I just cannot put my finger on what exactly I am unhappy about.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_034",
@@ -281,7 +281,7 @@
       "source_row": 13535,
       "original_text": "i think its time to find better stress management techniques and choke back this feeling of being overwhelmed",
       "display_text": "I think it's time to find better stress management techniques and choke back this feeling of being overwhelmed.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_035",
@@ -289,7 +289,7 @@
       "source_row": 5430,
       "original_text": "i feel like these lenses look so cute",
       "display_text": "I feel like these lenses look so cute.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_036",
@@ -297,7 +297,7 @@
       "source_row": 6510,
       "original_text": "i was still feeling weird about the day before",
       "display_text": "I was still feeling weird about the day before.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_037",
@@ -305,7 +305,7 @@
       "source_row": 13428,
       "original_text": "i send an email and show my true feelings on an issue i do run risk of it being ignored",
       "display_text": "I send an email and show my true feelings on an issue. I do run the risk of it being ignored.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Add the article in run the risk; do not supply an initial if/when."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Added the article in run the risk; did not supply an initial if/when."
     },
     {
       "tweet_id": "tweet_038",
@@ -313,7 +313,7 @@
       "source_row": 1071,
       "original_text": "id feel completely lost without him",
       "display_text": "I'd feel completely lost without him.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore the contraction I’d."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored the contraction I’d."
     },
     {
       "tweet_id": "tweet_039",
@@ -321,7 +321,7 @@
       "source_row": 2048,
       "original_text": "i do struggle i dont get anxious instead i feel that much more determined to succeed",
       "display_text": "I do struggle. I don't get anxious; instead, I feel that much more determined to succeed.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_040",
@@ -329,7 +329,7 @@
       "source_row": 13090,
       "original_text": "i wonder why people feel the need to make up stories to be amazed at the miracles around us every day",
       "display_text": "I wonder why people feel the need to make up stories to be amazed at the miracles around us every day.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Retain ambiguous connection between stories and miracles."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Retained ambiguous connection between stories and miracles."
     },
     {
       "tweet_id": "tweet_041",
@@ -337,7 +337,7 @@
       "source_row": 15930,
       "original_text": "im feeling ok other than the raging hormones",
       "display_text": "I'm feeling OK other than the raging hormones.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore I’m and capitalize OK."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored I’m and capitalized OK."
     },
     {
       "tweet_id": "tweet_042",
@@ -345,7 +345,7 @@
       "source_row": 2693,
       "original_text": "i went from feeling supportive kind and compassionate towards this person to wanting to lash out at them i can t though she blocked me clearly she has more experience at this than i do",
       "display_text": "I went from feeling supportive, kind and compassionate towards this person to wanting to lash out at them. I can't, though. She blocked me. Clearly she has more experience at this than I do.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_043",
@@ -353,7 +353,7 @@
       "source_row": 14105,
       "original_text": "im not feeling overwhelmed by school just yet i only give that a week or so hah",
       "display_text": "I'm not feeling overwhelmed by school just yet. I only give that a week or so, hah.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore I’m; retain hah and the existing informal estimate."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored I’m; retained hah and the existing informal estimate."
     },
     {
       "tweet_id": "tweet_044",
@@ -361,7 +361,7 @@
       "source_row": 3361,
       "original_text": "i don t mean this to be a serious recollection of feelings only a funny in a not funny sort of way story so let s get back to where the action begins",
       "display_text": "I don't mean this to be a serious recollection of feelings, only a funny in a not funny sort of way story, so let's get back to where the action begins.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore don’t and let’s; retain the informal funny in a not funny sort of way phrasing."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored don’t and let’s; retained the informal funny in a not funny sort of way phrasing."
     },
     {
       "tweet_id": "tweet_045",
@@ -369,7 +369,7 @@
       "source_row": 5748,
       "original_text": "i feel so embarrassed of myself for even having the nerve to post them all up for everyone else to read",
       "display_text": "I feel so embarrassed of myself for even having the nerve to post them all up for everyone else to read.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Retain colloquial embarrassed of myself."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Retained colloquial embarrassed of myself."
     },
     {
       "tweet_id": "tweet_046",
@@ -377,7 +377,7 @@
       "source_row": 854,
       "original_text": "im known to feel affectionate toward those who adore leonard cohen is what makes me like him quite a lot",
       "display_text": "I'm known to feel affectionate toward those who adore Leonard Cohen is what makes me like him quite a lot.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore I’m and capitalize Leonard Cohen; retain the incomplete/ambiguous clause structure."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored I’m and capitalized Leonard Cohen; retained the incomplete/ambiguous clause structure."
     },
     {
       "tweet_id": "tweet_047",
@@ -385,7 +385,7 @@
       "source_row": 14997,
       "original_text": "ive started to delve deep into myself and evaluate everything that has made me feel insecure or unworthy",
       "display_text": "I've started to delve deep into myself and evaluate everything that has made me feel insecure or unworthy.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_048",
@@ -393,7 +393,7 @@
       "source_row": 12139,
       "original_text": "i have every right to feel outraged that their legacy may be in danger",
       "display_text": "I have every right to feel outraged that their legacy may be in danger.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_049",
@@ -401,7 +401,7 @@
       "source_row": 2290,
       "original_text": "i feel like if i had a job worth caring about i wouldn t be so shifty",
       "display_text": "I feel like if I had a job worth caring about I wouldn't be so shifty.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore wouldn’t; retain shifty without interpreting it."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored wouldn’t; retained shifty without interpreting it."
     },
     {
       "tweet_id": "tweet_050",
@@ -409,7 +409,7 @@
       "source_row": 2506,
       "original_text": "i will adjust to it but for now it feels so strange",
       "display_text": "I will adjust to it, but for now it feels so strange.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_051",
@@ -417,7 +417,7 @@
       "source_row": 8700,
       "original_text": "im in a strange situation or feeling awkward i sometimes switch into comedian mode a bit of a defence mechanism from my self conscious school days and turned some of the sessions into katrinas minute stand up routine",
       "display_text": "I'm in a strange situation or feeling awkward. I sometimes switch into comedian mode, a bit of a defence mechanism from my self-conscious school days, and turned some of the sessions into Katrina's minute stand-up routine.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore I’m and Katrina’s; hyphenate self-conscious and stand-up. Preserve tense shift and missing quantity before minute."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored I’m and Katrina’s; hyphenated self-conscious and stand-up. Preserved tense shift and missing quantity before minute."
     },
     {
       "tweet_id": "tweet_052",
@@ -425,7 +425,7 @@
       "source_row": 10540,
       "original_text": "i feel apprehensive and wonder if the marks i have made in the past are still there",
       "display_text": "I feel apprehensive and wonder if the marks I have made in the past are still there.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_053",
@@ -433,7 +433,7 @@
       "source_row": 7426,
       "original_text": "i often times feel helpless in regards to my life s path",
       "display_text": "I often times feel helpless in regards to my life's path.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore life’s; retain colloquial often times and in regards to."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored life’s; retained colloquial often times and in regards to."
     },
     {
       "tweet_id": "tweet_054",
@@ -441,7 +441,7 @@
       "source_row": 14960,
       "original_text": "i get the feeling the oilers are hesitant to count on him again after he missed so much time a year ago",
       "display_text": "I get the feeling the Oilers are hesitant to count on him again after he missed so much time a year ago.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Capitalize the team name Oilers."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Capitalized the team name Oilers."
     },
     {
       "tweet_id": "tweet_055",
@@ -449,7 +449,7 @@
       "source_row": 15470,
       "original_text": "i feel funny just calling it a film",
       "display_text": "I feel funny just calling it a film.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_056",
@@ -457,7 +457,7 @@
       "source_row": 9892,
       "original_text": "i am starting to feel emotional",
       "display_text": "I am starting to feel emotional.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_057",
@@ -465,7 +465,7 @@
       "source_row": 14185,
       "original_text": "im feeling really really left out and somewhat dissatisfied with everything",
       "display_text": "I'm feeling really really left out and somewhat dissatisfied with everything.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Restore I’m; preserve repeated really and somewhat without changing intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Restored I’m; preserved repeated really and somewhat without changing intensity."
     },
     {
       "tweet_id": "tweet_058",
@@ -473,7 +473,7 @@
       "source_row": 11650,
       "original_text": "i feel really sad that my own girlfriend cannot even open up to me or communicate with me",
       "display_text": "I feel really sad that my own girlfriend cannot even open up to me or communicate with me.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_059",
@@ -481,7 +481,7 @@
       "source_row": 9739,
       "original_text": "i feel like a horrible rotten person for thinking that this is the most isolating thing a woman can go through and some days being tough is not an option",
       "display_text": "I feel like a horrible rotten person for thinking that this is the most isolating thing a woman can go through, and some days being tough is not an option.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Preserve vocabulary, negation and intensity."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Preserved vocabulary, negation and intensity."
     },
     {
       "tweet_id": "tweet_060",
@@ -489,7 +489,7 @@
       "source_row": 2419,
       "original_text": "i sat silent and open mouthed as he rattled off the reasons why he loved me the special times we had shared which had confirmed his feelings and was amazed that they were the same reasons and times together that made me realize how much i loved him",
       "display_text": "I sat silent and open-mouthed as he rattled off the reasons why he loved me, the special times we had shared which had confirmed his feelings, and was amazed that they were the same reasons and times together that made me realize how much I loved him.",
-      "reason": "Capitalize I/sentence starts; restore clear punctuation and contractions where applicable. Hyphenate open-mouthed; add clause punctuation without changing content."
+      "reason": "Capitalized I/sentence starts; restored clear punctuation and contractions where applicable. Hyphenated open-mouthed; add clause punctuation without changing content."
     }
   ]
 }

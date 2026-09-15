@@ -1,5 +1,5 @@
--- Run once in your own Supabase project's SQL Editor as the project administrator.
--- No existing tables/data are dropped. The transaction fails on a naming conflict.
+-- A1-2 emotion annotation: submission storage, validation, and access permissions.
+-- Installed for the live task. Run once in SQL Editor for an independent database.
 begin;
 
 create function public.valid_emotion_answers(value jsonb)
@@ -33,9 +33,8 @@ alter table public.submissions enable row level security;
 revoke all on table public.submissions from public, anon, authenticated;
 revoke all on function public.valid_emotion_answers(jsonb) from public, anon, authenticated;
 
--- A narrow RPC is needed for safe acknowledgement after a lost response:
--- identical ordered payload => true; different payload => 409; never overwrite.
--- RLS has no public policies; only this fixed-purpose definer can access the table.
+-- Exact retries acknowledge the saved submission; conflicting answers are rejected.
+-- Public callers access submissions only through this function.
 create function public.submit_emotion_task(p_participant_id uuid, p_answers jsonb, p_dataset_version text)
 returns boolean language plpgsql security definer set search_path = '' as $$
 declare stored public.submissions%rowtype;
