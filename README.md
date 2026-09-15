@@ -4,7 +4,13 @@ A five-post emotion labeling task. React + Vite serve a static page; Supabase st
 
 ## Current status
 
-Local implementation and browser checks are complete. The owner's Supabase public configuration is installed in ignored `.env.local`. **One agent-operated integration test was submitted from the real local website and acknowledged by Supabase (HTTP 200, `true`); completion survived refresh.** Identical-payload retries, conflicting/invalid payload rejection and public read/update/delete denial were verified against the actual API. The owner supplied a Supabase SQL Editor screenshot: the same participant ID and all five ordered tweet/label pairs match the browser submission, with one shared database timestamp. Local cloud persistence is verified; public deployment remains pending.
+**Live site:** https://ruiqi-chen-0216.github.io/CSE594-Ruiqi-Chen-Assignment1/
+
+**Source:** https://github.com/Ruiqi-Chen-0216/CSE594-Ruiqi-Chen-Assignment1
+
+**Successful deployment:** https://github.com/Ruiqi-Chen-0216/CSE594-Ruiqi-Chen-Assignment1/actions/runs/34915742064
+
+Local implementation and browser checks are complete. The owner's Supabase public configuration is installed in ignored `.env.local`. **One agent-operated integration test was submitted from the real local website and acknowledged by Supabase (HTTP 200, `true`); completion survived refresh.** Identical-payload retries, conflicting/invalid payload rejection and public read/update/delete denial were verified against the actual API. The owner supplied a Supabase SQL Editor screenshot: the same participant ID and all five ordered tweet/label pairs match the browser submission, with one shared database timestamp. Local cloud persistence is verified. GitHub Pages is now deployed; a separate five-answer submission from the public URL received HTTP 200 / `true` and retained completion after refresh. The administrator screenshot for that public-site submission remains pending.
 
 | Check                                                                   | Result                                                                                                                                                                                                                                                                                                            |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15,14 +21,16 @@ Local implementation and browser checks are complete. The owner's Supabase publi
 | Browser checks                                                          | Passed on the production test build under `/CSE594-Ruiqi-Chen-Assignment1/`: two independent browser contexts, random sets, no preselection, keyboard radios, modal focus/Escape, Back, draft refresh, edit/refresh/direct return to Review, submission freeze/retry/conflict/confirmed completion, mobile layout |
 | API behavior in browser tests                                           | Explicitly stubbed network failure, conflict and acknowledgement; **not evidence of database persistence**                                                                                                                                                                                                        |
 | Supabase live API | Real browser submission acknowledged; exact retry succeeds; changed payload conflicts; wrong count, duplicate/unknown ID, unknown label and oversized answers rejected; public GET/PATCH/DELETE denied. Owner-supplied SQL Editor screenshot verified: all five ordered rows match the browser submission. |
-| GitHub repository creation, Pages deployment and public-site collection | Local database screenshot verified; approved GitHub account authenticated; deployment in progress                                                                                                                                                                                                                                                         |
+| GitHub Pages | Public repository created and deployed successfully. Clean npm ci, typecheck, lint and production build passed in Actions. A real five-answer public-site submission was acknowledged by Supabase and completion survived refresh; its administrator query/screenshot is pending. |
 | Lovable                                                                 | Local remote/tracking and obsolete runtime integration removed; platform-side connection has not been verified                                                                                                                                                                                                    |
 
 The unconfigured production build was also checked before cloud configuration: it displays collection unavailability, retains all five answers, sends no submission request and never reports completion.
 
 Private local integration-test evidence is saved under `.local-backup/`: `cloud-local-test.json`, `cloud-contract-results.json`, browser screenshots and `cloud-local-verify.sql`. The owner ran that SQL and supplied the matching five-row screenshot in the conversation. Keep the original screenshot with the assignment report; it has not been copied into public source. The test is agent-operated and must not be represented as a recruited human participant. No data was deleted to test retries.
 
-## 1. Create your Supabase project
+## 1. Configure Supabase for a fresh installation
+
+The current owner project is already configured; do not rerun the schema there. These steps are for a new independent installation.
 
 1. Sign in at [Supabase Dashboard](https://supabase.com/dashboard) and create a project in an organization you control. Select the Free plan if appropriate. Save the database password privately; this app does not need it.
 2. Wait for the project to be ready. Open **SQL Editor → New query**, paste the entire [supabase/schema.sql](supabase/schema.sql), and run it once. It creates one table, a private validator and a narrow submission function in a transaction. If a same-named object exists, stop and inspect it; do not delete existing data or rerun by dropping tables.
@@ -105,7 +113,7 @@ Keep real participant screenshots/exports outside the public repository, for exa
 
 ## 4. Publish to GitHub Pages after cloud verification
 
-Owner and target repository approved by the user: **Ruiqi-Chen-0216 / CSE594-Ruiqi-Chen-Assignment1**. No repository creation or deployment has been performed in this session.
+Owner and target repository approved by the user: **Ruiqi-Chen-0216 / CSE594-Ruiqi-Chen-Assignment1**. This repository has now been created and deployed with the authenticated owner account. The following steps describe reproduction for a fresh repository; the current deployment does not need to be created again.
 
 1. Sign in as that owner and create the intended repository without initializing an extra README. Check `git status` before staging; `.env*` (except `.env.example`), the original labeled CSV, backups and test artifacts are ignored. Preserve existing history. The former `origin` was removed, so add the new repository after it exists:
 
@@ -135,4 +143,6 @@ Vite's repository base and static deployment steps follow its [official deployme
 
 ## Assignment hand-in
 
-Follow the provided simplified brief. Include runnable source, `package.json` + `package-lock.json`, `.env.example`, SQL, this README and the 60-item text review. Supply the **verified live link and real collected-data screenshot** separately in the assignment report; the localhost database screenshot has been verified; the live link and a public-site submission screenshot remain outstanding. Exclude `node_modules`, `.git`, local tools/backups, actual environment files and participant exports from public source. A1-1 is outside this implementation.
+Follow the provided simplified brief. Include runnable source, `package.json` + `package-lock.json`, `.env.example`, SQL, this README and the 60-item text review. Supply the **verified live link and real collected-data screenshot** separately in the assignment report; the localhost database screenshot has been verified; the live link is verified and only the public-site database screenshot remains outstanding. Exclude `node_modules`, `.git`, local tools/backups, actual environment files and participant exports from public source. A1-1 is outside this implementation.
+
+For the final public-site database screenshot, run the already prepared private `.local-backup/cloud-public-verify.sql` in Supabase SQL Editor and compare the five rows to `.local-backup/cloud-public-test.json`. The public browser review/completion screenshots are saved alongside them. These files contain integration-test evidence and are intentionally excluded from the public repository and source ZIP.
