@@ -46,41 +46,26 @@ One database row stores all five answers together. The array can be expanded int
 
 ## Testing
 
-Complete five-tweet submissions were tested locally and through the live website. The local submission was checked against the Supabase SQL Editor results: the participant ID and all five ordered tweet/label pairs matched. The live-site submission also received a successful database acknowledgement, and completion remained after refresh.
-
-Automated browser tests cover random assignment in two independent browser contexts, required choices, Back/Next, draft recovery, review/edit, keyboard controls, mobile layout, and submission failure/retry behavior. These repeatable tests use intercepted API responses. Separate checks against the hosted database verified that invalid submissions and conflicting answers are rejected and that public read/update/delete requests are denied. Type checking and the production build passed; lint reports no errors.
+The five-tweet task was tested locally and on the live website. A test submission was checked in Supabase, confirming that the participant ID, tweet IDs, and selected labels were recorded correctly. Checks also covered Back/Next, editing, refresh recovery, and mobile use.
 
 ## Running the code
 
-The live link above is ready to use. To run the same interface locally, install **Node.js 22.12 or later**, then run from the project directory:
+The system is currently deployed online at the **[task website](https://ruiqi-chen-0216.github.io/CSE594-Ruiqi-Chen-Assignment1/)**. It can be used directly without installing anything.
 
-```sh
-npm ci
-```
+If the GSI would like to run the interface locally:
 
-Copy `.env.example` to `.env.local`. It includes the public connection settings for this assignment's database; no Supabase account or database setup is needed to evaluate the interface.
+1. Install **Node.js 22.12 or later** and download or clone this repository.
+2. In the project directory, copy `.env.example` to `.env.local`. The file already contains the public connection settings for this assignment's database.
+3. Run:
 
-```sh
-npm run dev
-```
+   ```sh
+   npm ci
+   npm run dev
+   ```
 
-Open **http://127.0.0.1:8080/**. An internet connection is required, and local runs submit to the same hosted database as the live site.
+4. Open **http://127.0.0.1:8080/** in a browser.
 
-Additional commands:
-
-```sh
-npm run typecheck
-npm run lint
-npm run build
-npm run preview
-```
-
-`build` produces the static site in `dist/`; `preview` serves it at **http://localhost:4173/**. To run the automated browser tests:
-
-```sh
-npx playwright install chromium
-npm test
-```
+Local runs use the same hosted database as the online system, so an internet connection is required. No new Supabase project or database setup is needed.
 
 ## Code organization
 
@@ -95,24 +80,3 @@ npm test
 | `tests/browser.mjs`                       | Automated interface tests                              |
 
 The frontend uses React, TypeScript, and Tailwind CSS with Vite. GitHub Pages hosts the interface, and Supabase provides persistent storage.
-
-<details>
-<summary>Recreating the database independently (optional)</summary>
-
-For a separate installation, run `supabase/schema.sql` once in a new Supabase project's SQL Editor. Replace the URL and publishable key in `.env.local` with that project's public values, then restart the app. The submitted system already has its database configured.
-
-To inspect a submission as the database administrator, replace the UUID below with the participant ID:
-
-```sql
-select s.participant_id,
-       a.answer->>'tweet_id' as tweet_id,
-       a.answer->>'selected_label' as selected_label,
-       s.submitted_at
-from public.submissions s
-cross join lateral jsonb_array_elements(s.answers)
-  with ordinality as a(answer, position)
-where s.participant_id = 'PARTICIPANT_UUID'::uuid
-order by a.position;
-```
-
-</details>
