@@ -1,4 +1,13 @@
 # Logs
+.local-tools/
+.local-backup/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+emotion_assignment_random_60.csv
+
 logs
 *.log
 npm-debug.log*
